@@ -1,3 +1,4 @@
+import { Post } from "../components/Post";
 import { Profile } from "../components/Profile";
 
 export function Home(){
@@ -14,6 +15,17 @@ export function Home(){
           placeholder="Buscar conteúdo" 
         />
       </form>
+      <section className="grid grid-cols-2 gap-8 my-12">
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </section>
     </main>
   )
 }
