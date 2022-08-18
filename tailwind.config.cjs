@@ -22,6 +22,9 @@ module.exports = {
       fontFamily: {
         nunito: ['Nunito', 'sans-serif'],
       },
+      backgroundImage: {
+        'banner': "url('./src/assets/bannerHeader.png')",
+      }
     },
   },
   plugins: [],
