@@ -1,4 +1,4 @@
-export function Post(){
+export function PostCard(){
   return (
     <div className="rounded-[10px] p-8 bg-base-post">
       <header className="flex gap-2 items-start">

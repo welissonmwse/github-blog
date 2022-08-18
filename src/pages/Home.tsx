@@ -1,4 +1,4 @@
-import { Post } from "../components/Post";
+import { PostCard } from "../components/PostCard";
 import { Profile } from "../components/Profile";
 
 export function Home(){
@@ -16,15 +16,15 @@ export function Home(){
         />
       </form>
       <section className="grid grid-cols-2 gap-8 my-12">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
       </section>
     </main>
   )
