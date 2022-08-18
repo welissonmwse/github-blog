@@ -1,5 +1,9 @@
+import { Profile } from "../components/Profile";
+
 export function Home(){
   return (
-    <h1>Home</h1>
+    <main className="max-w-4xl mx-auto mt-[-88px]">
+      <Profile />
+    </main>
   )
 }
