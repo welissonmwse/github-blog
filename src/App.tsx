@@ -1,6 +1,5 @@
 import { Header } from "./components/Header";
-import { Home } from "./pages/Home";
-import { Post } from "./pages/Post";
+import { Router } from "./Router";
 
 
 export function App() {
@@ -8,8 +7,7 @@ export function App() {
   return (
     <>
       <Header />
-      {/* <Home /> */}
-      <Post />
+      <Router />
     </>
   )
 }
