@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import {FaExternalLinkAlt, FaBuilding, FaUserFriends, FaGithub} from 'react-icons/fa'
+import { api } from '../services/api'
 
 interface ProfileDataProps {
   name: string
@@ -15,8 +16,7 @@ export function Profile() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch('https://api.github.com/users/welissonmwse')
-      const data = await response.json()
+      const { data } = await api.get('users/welissonmwse')
       const newUser = {
         name: data.name,
         bio: data.bio,
