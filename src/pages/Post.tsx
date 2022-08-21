@@ -3,6 +3,8 @@ import ReactMarkdown from 'react-markdown'
 import { FaCalendarDay, FaChevronLeft, FaComment, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { NavLink, useParams } from "react-router-dom";
 import { api } from "../services/api";
+import { formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 interface IssueDataProps {
   comments: number
@@ -24,14 +26,20 @@ export function Post(){
     repository_url: ''
   })
 
+  
   useEffect(() => {
     (async () => {
-      console.log(issueNumber)
       const response = await api.get(`https://api.github.com/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${issueNumber}`)
+      
+      const publishedDateRelativeNow = formatDistanceToNow(new Date(response.data.created_at),{
+        locale: ptBR,
+        addSuffix: true,
+      })
+
       setIssue({
         body: response.data.body,
         comments: response.data.comments,
-        created_at: response.data.created_at,
+        created_at: publishedDateRelativeNow,
         title: response.data.title,
         user: response.data.user.login,
         repository_url: response.data.html_url
@@ -64,7 +72,7 @@ export function Post(){
           </div>
           <div className="flex items-center gap-2">
             <FaCalendarDay className="text-base-label" />
-            <p className="font-nunito text-base-text font-normal text-base leading-6">Há 1 dia</p>
+            <p className="font-nunito text-base-text font-normal text-base leading-6">{issue.created_at}</p>
           </div>
           <div className="flex items-center gap-2">
             <FaComment className="text-base-label" />
