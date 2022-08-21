@@ -45,7 +45,7 @@ export function Home(){
         <p className="font-nunito text-base-span font-normal text-sm">6 publicações</p>
       </header>
       <form className="mt-3" action="">
-        <input className="placeholder:font-nunito placeholder:text-base-label py-3 px-4 rounded-md w-full bg-base-input border border-base-border text-base-text" 
+        <input className="placeholder:font-nunito placeholder:text-base-label py-3 px-4 rounded-md w-full bg-base-input border border-base-border text-base-text focus:border-blue outline-0" 
           type="text" 
           placeholder="Buscar conteúdo" 
         />

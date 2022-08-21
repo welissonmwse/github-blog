@@ -44,12 +44,12 @@ export function Post(){
     <main className="max-w-4xl mx-auto mt-[-88px]">
       <header className="p-8 rounded-[0.625rem] bg-base-profile">
         <nav className="flex justify-between">
-          <NavLink to="/" className="flex gap-2 items-center font-nunito font-bold text-xs text-blue">
+          <NavLink to="/" className="flex gap-2 items-center font-nunito font-bold text-xs text-blue hover:underline">
             <FaChevronLeft />
             VOLTAR
           </NavLink>
           <a href={issue.repository_url} 
-            className="flex gap-2 items-center font-nunito font-bold text-xs text-blue"
+            className="flex gap-2 items-center font-nunito font-bold text-xs text-blue hover:underline"
             target="_blank"
           >
             VER NO GITHUB

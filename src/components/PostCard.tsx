@@ -17,7 +17,7 @@ export function PostCard({number, title, body, created_at}:PostsProps){
   const paragraphs = body.split(/;?\r\n|;?\n|;?\r/)
 
   return (
-    <NavLink to={`/post/${number}`} className="rounded-[10px] p-8 bg-base-post">
+    <NavLink to={`/post/${number}`} className="rounded-[10px] p-8 bg-base-post border-solid border-2 border-base-post hover:border-base-label">
       <header className="flex gap-2 items-start">
         <h3 className="font-nunito text-xl font-bold text-base-title leading-8">
           {title}

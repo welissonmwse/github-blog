@@ -37,7 +37,7 @@ export function Profile() {
       <div className="w-full min-h-full flex flex-col">
         <header className="flex justify-between">
           <h1 className="text-base-title font-bold text-2xl font-nunito leading-8">{user?.name}</h1>
-          <a className="flex gap-2 items-center font-bold font-nunito text-xs text-blue" 
+          <a className="flex gap-2 items-center font-bold font-nunito text-xs text-blue hover:underline" 
             href={`https://github.com/${user?.userName}`}
             target="_blank"
           >
