@@ -5,6 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { api } from "../services/api";
 import { formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
+import { ContentPostLoading, HeaderPostLoading } from "../components/Loading";
 
 interface IssueDataProps {
   comments: number
@@ -17,6 +18,7 @@ interface IssueDataProps {
 
 export function Post(){
   const { issueNumber } = useParams()
+  const [isLoading, setIsLoading] = useState(true)
   const [issue, setIssue] = useState<IssueDataProps>({
     comments: 0,
     created_at: '',
@@ -29,6 +31,7 @@ export function Post(){
   
   useEffect(() => {
     (async () => {
+      setIsLoading(true)
       const response = await api.get(`https://api.github.com/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${issueNumber}`)
       
       const publishedDateRelativeNow = formatDistanceToNow(new Date(response.data.created_at),{
@@ -44,46 +47,56 @@ export function Post(){
         user: response.data.user.login,
         repository_url: response.data.html_url
       })
-      console.log(response.data)
+      setIsLoading(false)
     })()
   }, [])
 
   return (
     <main className="max-w-4xl mx-auto mt-[-88px]">
       <header className="p-8 rounded-[0.625rem] bg-base-profile">
-        <nav className="flex justify-between">
-          <NavLink to="/" className="flex gap-2 items-center font-nunito font-bold text-xs text-blue hover:underline">
-            <FaChevronLeft />
-            VOLTAR
-          </NavLink>
-          <a href={issue.repository_url} 
-            className="flex gap-2 items-center font-nunito font-bold text-xs text-blue hover:underline"
-            target="_blank"
-          >
-            VER NO GITHUB
-            <FaExternalLinkAlt />
-          </a>
-        </nav>
-        <h1 className="mt-5 font-nunito font-bold text-2xl text-base-title">{issue?.title}</h1>
-        <div className="flex items-center gap-6 mt-6">
-          <div className="flex items-center gap-2">
-            <FaGithub className="text-base-label" />
-            <p className="font-nunito text-base-text font-normal text-base leading-6">{issue?.user}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <FaCalendarDay className="text-base-label" />
-            <p className="font-nunito text-base-text font-normal text-base leading-6">{issue.created_at}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <FaComment className="text-base-label" />
-            <p className="font-nunito text-base-text font-normal text-base leading-6">{issue?.comments} comentários</p>
-          </div>
-        </div>
+        {isLoading ? (
+          <HeaderPostLoading />
+        ) : (
+          <>
+            <nav className="flex justify-between">
+              <NavLink to="/" className="flex gap-2 items-center font-nunito font-bold text-xs text-blue hover:underline">
+                <FaChevronLeft />
+                VOLTAR
+              </NavLink>
+              <a href={issue.repository_url} 
+                className="flex gap-2 items-center font-nunito font-bold text-xs text-blue hover:underline"
+                target="_blank"
+              >
+                VER NO GITHUB
+                <FaExternalLinkAlt />
+              </a>
+            </nav>
+            <h1 className="mt-5 font-nunito font-bold text-2xl text-base-title">{issue?.title}</h1>
+            <div className="flex items-center gap-6 mt-6">
+              <div className="flex items-center gap-2">
+                <FaGithub className="text-base-label" />
+                <p className="font-nunito text-base-text font-normal text-base leading-6">{issue?.user}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaCalendarDay className="text-base-label" />
+                <p className="font-nunito text-base-text font-normal text-base leading-6">{issue.created_at}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaComment className="text-base-label" />
+                <p className="font-nunito text-base-text font-normal text-base leading-6">{issue?.comments} comentários</p>
+              </div>
+            </div>
+          </>
+        )}
       </header>
       <div className="p-8 font-nunito text-base-text">
-        <ReactMarkdown>
-          {issue?.body}
-        </ReactMarkdown>
+        {isLoading ? (
+          <ContentPostLoading />
+        ) : (
+          <ReactMarkdown>
+            {issue?.body}
+          </ReactMarkdown>
+        )}
       </div>
     </main>
   )
