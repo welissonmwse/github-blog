@@ -32,7 +32,7 @@ export function Post(){
   useEffect(() => {
     (async () => {
       setIsLoading(true)
-      const response = await api.get(`https://api.github.com/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${issueNumber}`)
+      const response = await api.get(`https://api.github.com/repos/welissonmwse/github-blog/issues/${issueNumber}`)
       
       const publishedDateRelativeNow = formatDistanceToNow(new Date(response.data.created_at),{
         locale: ptBR,

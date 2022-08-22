@@ -19,7 +19,7 @@ export function Home(){
     (async () => {
       const  response  = await api.get('search/issues', {
         params: {
-          q: 'repo:rocketseat-education/reactjs-github-blog-challenge'
+          q: 'repo:welissonmwse/github-blog'
         }
       })
       

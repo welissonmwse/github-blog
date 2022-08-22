@@ -1,5 +1,6 @@
 import { formatDistanceToNow } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
+import ReactMarkdown from "react-markdown"
 import { NavLink } from "react-router-dom"
 
 interface PostsProps {
@@ -27,7 +28,9 @@ export function PostCard({number, title, body, created_at}:PostsProps){
         </span>
       </header>
       <p className="mt-5 text-base-text font-nunito text-sm font-normal leading-[25.6px]">
-        {paragraphs[0]}
+        <ReactMarkdown>
+          {paragraphs[0]}
+        </ReactMarkdown>
       </p>
     </NavLink>
   )
