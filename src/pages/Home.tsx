@@ -61,7 +61,7 @@ export function Home(){
       <Profile />
       <header className="flex justify-between items-center mt-[72px]">
         <h2 className="text-base-subtitle font-nunito text-lg font-bold">Publicações</h2>
-        <p className="font-nunito text-base-span font-normal text-sm">6 publicações</p>
+        <p className="font-nunito text-base-span font-normal text-sm">{posts.length} publicações</p>
       </header>
       <form className="mt-3" onSubmit={handleSubmit}>
         <input className="placeholder:font-nunito placeholder:text-base-label py-3 px-4 rounded-md w-full bg-base-input border border-base-border text-base-text focus:border-blue outline-0" 
